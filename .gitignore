@@ -1,0 +1,6 @@
+.vs
+[Oo]bj/
+[Bb]in/
+src/Cyberboss.OidcReverseProxy/appsettings.*.toml
+src/Cyberboss.OidcReverseProxy/Cyberboss.OidcReverseProxy.csproj.user
+src/Cyberboss.OidcReverseProxy/Properties/launchSettings.json

@@ -1,0 +1,9 @@
+TargetUrl = "http://localhost:5000"
+
+CookieDurationMinutes = 15
+
+[OpenIDConnectSettings]
+Authority = "https://auth.example.com"
+ClientId = "ExampleClientID"
+ClientSecret = "ExampleClientSecret"
+RedirectUrl = "https://service.example.com"

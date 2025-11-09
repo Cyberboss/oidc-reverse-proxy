@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+  </Folder>
+  <Project Path="src/Cyberboss.OidcReverseProxy/Cyberboss.OidcReverseProxy.csproj" Id="f58c7535-2f82-4109-825e-03ea16b8eabf" />
+</Solution>
