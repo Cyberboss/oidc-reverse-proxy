@@ -2,7 +2,6 @@ inputs@{
   config,
   lib,
   pkgs,
-  writeShellScriptBin,
   ...
 }:
 
@@ -10,10 +9,6 @@ let
   enabled-instances = lib.filterAttrs (instance-name: instance-config: instance-config.enable) config.services.oidc-reverse-proxy;
   package = import ./package.nix inputs;
   config-format = pkgs.formats.toml { };
-  package-wrapper = instance-name: pkgs.writeShellScriptBin "oidc-reverse-proxy-wrapper" ''
-    cd /etc/oidc-reverse-proxy.d/${instance-name}
-    exec ${package}/bin/oidc-reverse-proxy
-  '';
 
   etc-layout = instance-name: instance-config: {
     "oidc-reverse-proxy.d/${instance-name}/appsettings.toml" = {
@@ -46,11 +41,11 @@ in
               '';
             };
             environmentFile = lib.mkOption {
-                type = lib.types.nullOr lib.types.path;
-                default = null;
-                description = ''
-                    Environment file as defined in {manpage}`systemd.exec(5)`
-                '';
+              type = lib.types.nullOr lib.types.path;
+              default = null;
+              description = ''
+                  Environment file as defined in {manpage}`systemd.exec(5)`
+              '';
             };
           };
         }
@@ -69,8 +64,9 @@ in
           serviceConfig = {
             Type = "simple";
             DynamicUser = true;
-            ExecStart = "${(package-wrapper instance-name)}/bin/oidc-reverse-proxy-wrapper";
+            ExecStart = "${package}/bin/oidc-reverse-proxy";
             EnvironmentFile = instance-config.environmentFile;
+            WorkingDirectory = "/etc/oidc-reverse-proxy.d/${instance-name}";
           };
           wantedBy = [ "multi-user.target" ];
         };
