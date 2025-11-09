@@ -1,3 +1,4 @@
+Urls = "http://localhost:5001"
 TargetUrl = "http://localhost:5000"
 
 CookieDurationMinutes = 15
