@@ -12,7 +12,7 @@ let
 
   etc-layout = instance-name: instance-config: {
     "oidc-reverse-proxy.d/${instance-name}/appsettings.toml" = {
-      text = (builtins.readFile "${package}/bin/appsettings.toml");
+      text = (builtins.readFile ./src/appsettings.toml);
       mode = "0444";
     };
     "oidc-reverse-proxy.d/${instance-name}/appsettings.Production.toml" = {
