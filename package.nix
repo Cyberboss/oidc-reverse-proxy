@@ -1,9 +1,8 @@
 {
   pkgs,
-  buildDotnetModule,
   ...
 }:
-buildDotnetModule {
+pkgs.buildDotnetModule {
     pname = "Cyberboss.OidcReverseProxy";
     version = "1.0.0";
 
