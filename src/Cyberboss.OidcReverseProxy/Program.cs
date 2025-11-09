@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Authentication;
@@ -68,7 +68,7 @@ namespace Cyberboss.OidcReverseProxy
 						context => context.ChallengeAsync(
 							new AuthenticationProperties
 							{
-								RedirectUri = "/",
+								RedirectUri = $"{context.Request.Scheme}://{context.Request.Host}/",
 							}));
 				});
 
