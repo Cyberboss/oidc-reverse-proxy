@@ -14,6 +14,17 @@ let
     cd /etc/oidc-reverse-proxy.d/${instance-name}
     exec ${package}/bin/oidc-reverse-proxy
   '';
+
+  etc-layout = instance-name: instance-config: {
+    "oidc-reverse-proxy.d/${instance-name}/appsettings.toml" = {
+      text = (builtins.readFile "${package}/bin/appsettings.toml");
+      mode = "0444";
+    };
+    "oidc-reverse-proxy.d/${instance-name}/appsettings.Production.toml" = {
+      source = config-format.generate "config" instance-config.config;
+      mode = "0444";
+    };
+  };
 in
 {
   options.services.oidc-reverse-proxy = lib.mkOption {
@@ -48,22 +59,7 @@ in
   };
 
   config = {
-    environment.etc = lib.mapAttrs' (instance-name: instance-config:
-      {
-        name = "oidc-reverse-proxy.d/${instance-name}/appsettings.toml";
-        value = {
-            text = (builtins.readFile "${package}/bin/appsettings.toml");
-          mode = "0444";
-        };
-      }) enabled-instances;
-    environment.etc = lib.mapAttrs' (instance-name: instance-config:
-      {
-        name = "oidc-reverse-proxy.d/${instance-name}/appsettings.Production.toml";
-        value = {
-          source = config-format.generate "config" instance-config.config;
-          mode = "0444";
-        };
-      }) enabled-instances;
+    environment.etc = lib.mapAttrs etc-layout enabled-instances;
 
     systemd.services = lib.mapAttrs' (instance-name: instance-config:
       {
