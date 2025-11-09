@@ -67,7 +67,7 @@ in
           serviceConfig = {
             Type = "simple";
             DynamicUser = true;
-            ExecStart = "${package}/bin/oidc-reverse-proxy";
+            ExecStart = "${package}/bin/Cyberbos.OidcReverseProxy";
             EnvironmentFile = instance-config.environmentFile;
             WorkingDirectory = "/etc/oidc-reverse-proxy.d/${instance-name}";
           };
