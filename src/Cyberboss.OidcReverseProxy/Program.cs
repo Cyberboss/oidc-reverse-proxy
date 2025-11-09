@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -41,7 +42,7 @@ namespace Cyberboss.OidcReverseProxy
 				})
 				.AddOpenIdConnect(options =>
 				{
-					var oidcConfig = builder.Configuration.GetSection("OpenIDConnectSettings");
+					var oidcConfig = builder.Configuration.GetRequiredSection("OpenIDConnectSettings");
 
 					options.Authority = oidcConfig["Authority"];
 					options.ClientId = oidcConfig["ClientId"];
@@ -56,8 +57,19 @@ namespace Cyberboss.OidcReverseProxy
 			builder.Host.UseConsoleLifetime();
 
 			using var app = builder.Build();
+			var forwardedHeaderOptions = new ForwardedHeadersOptions
+			{
+				ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto | ForwardedHeaders.XForwardedHost,
+			};
+
+			forwardedHeaderOptions.KnownNetworks.Clear();
+			forwardedHeaderOptions.KnownNetworks.Add(
+				new IPNetwork(
+					global::System.Net.IPAddress.Any,
+					0));
 
 			app
+				.UseForwardedHeaders(forwardedHeaderOptions)
 				.UseRouting()
 				.UseAuthentication()
 				.UseMiddleware<ReverseProxyMiddleware>()
@@ -68,7 +80,7 @@ namespace Cyberboss.OidcReverseProxy
 						context => context.ChallengeAsync(
 							new AuthenticationProperties
 							{
-								RedirectUri = builder.Configuration.GetRequiredSection("RedirectUrl").Get<string>(),
+								RedirectUri = "/",
 							}));
 				});
 

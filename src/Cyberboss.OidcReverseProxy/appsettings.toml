@@ -7,4 +7,3 @@ CookieDurationMinutes = 15
 Authority = "https://auth.example.com"
 ClientId = "ExampleClientID"
 ClientSecret = "ExampleClientSecret"
-RedirectUrl = "https://service.example.com"
