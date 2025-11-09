@@ -18,7 +18,7 @@ pkgs.buildDotnetModule {
     projectFile = "src/Cyberboss.OidcReverseProxy/Cyberboss.OidcReverseProxy.csproj";
     nugetDeps = ./deps.json;
 
-    dotnet-sdk = pkgs.dotnetCorePackages.sdk_9_0;
+    dotnet-sdk = pkgs.dotnetCorePackages.sdk_8_0;
     dotnet-runtime = pkgs.dotnetCorePackages.runtime_8_0;
 
     executables = [ "Cyberboss.OidcReverseProxy" ]; # This wraps "$out/lib/$pname/foo" to `$out/bin/foo`.
