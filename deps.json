@@ -1,0 +1,87 @@
+[
+  {
+    "pname": "Microsoft.AspNetCore.Authentication.OpenIdConnect",
+    "version": "8.0.21",
+    "hash": "sha256-YF69u2sBKv00gMmB1y/PWxpyYL8wHn6kx7NQCzXgyLE="
+  },
+  {
+    "pname": "Microsoft.Extensions.Configuration",
+    "version": "5.0.0",
+    "hash": "sha256-N3yQnqcwAKISG6HS8ZC3PFpBMK+xCTkZpOBtgOnfqQY="
+  },
+  {
+    "pname": "Microsoft.Extensions.Configuration.Abstractions",
+    "version": "5.0.0",
+    "hash": "sha256-0+ywPdqMkx32+HcMHqAp00cWBE7aCNc09Xh2eRObHTs="
+  },
+  {
+    "pname": "Microsoft.Extensions.Configuration.FileExtensions",
+    "version": "5.0.0",
+    "hash": "sha256-41soBkRr6fPO7KYnXb+462KyXd23YZ0gT7WyPnISAvM="
+  },
+  {
+    "pname": "Microsoft.Extensions.FileProviders.Abstractions",
+    "version": "5.0.0",
+    "hash": "sha256-QWpl951Ns5Zu4w2GAhcB1qVCmcCaUZEz8198sUB7UAU="
+  },
+  {
+    "pname": "Microsoft.Extensions.FileProviders.Physical",
+    "version": "5.0.0",
+    "hash": "sha256-7Wt0iaQnbFt12MczXHCh8apzJcyAykRFmNcoRAKKcQM="
+  },
+  {
+    "pname": "Microsoft.Extensions.FileSystemGlobbing",
+    "version": "5.0.0",
+    "hash": "sha256-q145xaBUpweu7GvPKn0b2rJgOU5eMIZPoABKv3ayplI="
+  },
+  {
+    "pname": "Microsoft.Extensions.Primitives",
+    "version": "5.0.0",
+    "hash": "sha256-pj1BdHlmYm5HZifp/yB3lwDkdw0/jcIF0vYg6O1kmGs="
+  },
+  {
+    "pname": "Microsoft.IdentityModel.Abstractions",
+    "version": "7.1.2",
+    "hash": "sha256-QN2btwsc8XnOp8RxwSY4ntzpqFIrWRZg6ZZEGBZ6TQY="
+  },
+  {
+    "pname": "Microsoft.IdentityModel.JsonWebTokens",
+    "version": "7.1.2",
+    "hash": "sha256-kVTS9i3khR7/0JBk52jzv4FUmBsbqntqVyqkDA/APvk="
+  },
+  {
+    "pname": "Microsoft.IdentityModel.Logging",
+    "version": "7.1.2",
+    "hash": "sha256-6M7Y1u2cBVsO/dP+qrgkMLisXbZgMgyWoRs5Uq/QJ/o="
+  },
+  {
+    "pname": "Microsoft.IdentityModel.Protocols",
+    "version": "7.1.2",
+    "hash": "sha256-6OXP0vQ6bQ3Xvj3I73eqng6NqqMC4htWKuM8cchZhWI="
+  },
+  {
+    "pname": "Microsoft.IdentityModel.Protocols.OpenIdConnect",
+    "version": "7.1.2",
+    "hash": "sha256-cAwwCti+/ycdjqNy8PrBNEeuF7u5gYtCX8vBb2qIKRs="
+  },
+  {
+    "pname": "Microsoft.IdentityModel.Tokens",
+    "version": "7.1.2",
+    "hash": "sha256-qf8y8KCo1ysrK+jCrnR+ARHwlfMWPXLxe7a41FVg4OA="
+  },
+  {
+    "pname": "System.IdentityModel.Tokens.Jwt",
+    "version": "7.1.2",
+    "hash": "sha256-EBVWd0gyU8QM23xclTQAHE/yGbXvHKqZfZ80b1VHuiU="
+  },
+  {
+    "pname": "Tomlyn",
+    "version": "0.14.3",
+    "hash": "sha256-0B67WBV/lPiYyjQou1P57EkRK02mYkvzDp/kx1ZDBkY="
+  },
+  {
+    "pname": "Tomlyn.Extensions.Configuration",
+    "version": "1.0.6",
+    "hash": "sha256-W+hcw40XTxR1XFihx8NMaaQVLpM69bX3kG7wdS4DHZM="
+  }
+]
