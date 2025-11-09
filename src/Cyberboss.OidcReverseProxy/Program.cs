@@ -36,7 +36,7 @@ namespace Cyberboss.OidcReverseProxy
 				})
 				.AddCookie(options =>
 				{
-					options.ExpireTimeSpan = TimeSpan.FromMinutes(builder.Configuration.GetSection("CookieDurationMinutes").Get<uint>()); // Set desired session duration
+					options.ExpireTimeSpan = TimeSpan.FromMinutes(builder.Configuration.GetRequiredSection("CookieDurationMinutes").Get<uint>()); // Set desired session duration
 					options.SlidingExpiration = true; // Extend session on activity
 				})
 				.AddOpenIdConnect(options =>
@@ -68,7 +68,7 @@ namespace Cyberboss.OidcReverseProxy
 						context => context.ChallengeAsync(
 							new AuthenticationProperties
 							{
-								RedirectUri = $"{context.Request.Scheme}://{context.Request.Host}/",
+								RedirectUri = builder.Configuration.GetRequiredSection("RedirectUrl").Get<string>(),
 							}));
 				});
 
