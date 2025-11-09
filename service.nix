@@ -67,7 +67,7 @@ in
           serviceConfig = {
             Type = "simple";
             DynamicUser = true;
-            ExecStart = "${package}/bin/Cyberbos.OidcReverseProxy";
+            ExecStart = "${pkgs.dotnetCorePackages.runtime_8_0}/bin/dotnet ${package}/lib/Cyberbos.OidcReverseProxy/Cyberbos.OidcReverseProxy.dll";
             EnvironmentFile = instance-config.environmentFile;
             WorkingDirectory = "/etc/oidc-reverse-proxy.d/${instance-name}";
           };

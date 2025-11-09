@@ -21,5 +21,5 @@ pkgs.buildDotnetModule {
     dotnet-sdk = pkgs.dotnetCorePackages.sdk_8_0;
     dotnet-runtime = pkgs.dotnetCorePackages.runtime_8_0;
 
-    executables = [ "Cyberboss.OidcReverseProxy" ]; # This wraps "$out/lib/$pname/foo" to `$out/bin/foo`.
+    executables = [ ]; # This wraps "$out/lib/$pname/foo" to `$out/bin/foo`.
 }
