@@ -54,7 +54,10 @@ in
   };
 
   config = {
-    environment.etc = lib.mapAttrs etc-layout enabled-instances;
+    environment.etc = lib.mapAttrs' (instance-name: instance-config: {
+      name = "etc";
+      value = instance-config;
+    }) (lib.mapAttrs etc-layout enabled-instances);
 
     systemd.services = lib.mapAttrs' (instance-name: instance-config:
       {
