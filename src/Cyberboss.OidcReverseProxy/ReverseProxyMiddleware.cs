@@ -29,7 +29,7 @@ namespace Cyberboss.OidcReverseProxy
 
 		public async Task Invoke(HttpContext context)
 		{
-			if (context.User.Identity?.IsAuthenticated != true)
+			if (context.User.Identity?.IsAuthenticated != true || context.Request.Path == "/oidc-landing")
 			{
 				await this._nextMiddleware(context);
 				return;

@@ -80,8 +80,15 @@ namespace Cyberboss.OidcReverseProxy
 						context => context.ChallengeAsync(
 							new AuthenticationProperties
 							{
-								RedirectUri = "/",
+								RedirectUri = "/oidc-landing",
 							}));
+					endpoints.MapGet(
+						"/oidc-landing",
+						context =>
+						{
+							context.Response.Redirect("/");
+							return Task.CompletedTask;
+						});
 				});
 
 			await app.RunAsync();
