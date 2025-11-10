@@ -48,6 +48,8 @@ namespace Cyberboss.OidcReverseProxy
 					options.ClientId = oidcConfig["ClientId"];
 					options.ClientSecret = oidcConfig["ClientSecret"];
 
+					Console.WriteLine($"IM SO MAD: {options.Authority} {options.ClientId} {options.ClientSecret}");
+
 					options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
 					options.ResponseType = OpenIdConnectResponseType.Code;
 
