@@ -26,7 +26,8 @@ namespace Cyberboss.OidcReverseProxy
 			builder
 				.Configuration
 				.AddTomlFile($"{AppSettings}{TomlExtension}")
-				.AddTomlFile($"{AppSettings}.{builder.Environment.EnvironmentName}{TomlExtension}");
+				.AddTomlFile($"{AppSettings}.{builder.Environment.EnvironmentName}{TomlExtension}")
+				.AddEnvironmentVariables();
 
 			builder
 				.Services
@@ -47,8 +48,6 @@ namespace Cyberboss.OidcReverseProxy
 					options.Authority = oidcConfig["Authority"];
 					options.ClientId = oidcConfig["ClientId"];
 					options.ClientSecret = oidcConfig["ClientSecret"];
-
-					Console.WriteLine($"IM SO MAD: {options.Authority} {options.ClientId} {options.ClientSecret}");
 
 					options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
 					options.ResponseType = OpenIdConnectResponseType.Code;
