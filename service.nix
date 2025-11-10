@@ -10,21 +10,21 @@ let
   package = import ./package.nix inputs;
   config-format = pkgs.formats.toml { };
 
-  etc-layout-base = lib.mapAttrs' instance-name: instance-config: {
+  etc-layout-base = lib.mapAttrs' (instance-name: instance-config: {
     name = "oidc-reverse-proxy.d/${instance-name}/appsettings.toml";
     value = {
       text = (builtins.readFile ./src/Cyberboss.OidcReverseProxy/appsettings.toml);
       mode = "0444";
     };
-  } enabled-instances;
+  }) enabled-instances;
 
-  etc-layout-prod = lib.mapAttrs' instance-name: instance-config: {
+  etc-layout-prod = lib.mapAttrs' (instance-name: instance-config: {
     name = "oidc-reverse-proxy.d/${instance-name}/appsettings.Production.toml";
     value = {
       source = config-format.generate "config" instance-config.config;
       mode = "0444";
     };
-  };
+  }) enabled-instances;
 in
 {
   options.services.oidc-reverse-proxy = lib.mkOption {
